@@ -93,14 +93,20 @@ class _AppHomePageState extends State<AppHomePage> {
                   children: <Widget>[
                     // Image.asset('assets/images/csubu-bw.png', width: 48, height: 48),
                     CircleAvatar(backgroundImage: NetworkImage('${student["img"]}')),
-                    Expanded(child: Text(student["name"]))
+                    Expanded(child: Text(student["name"])),
+                      
                   ]
+
                 ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            subtitle: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Text('Price: ${student["price"]}'),
-                Text('Detail: ${student["detail"]}')
+                Text('Detail: ${student["detail"]}'),
+                Icon(Icons.share, color: Colors.black26),
+                Icon(Icons.thumb_up, color: Colors.lightBlue),
+                Icon(Icons.favorite, color: Colors.pink),
+
               ]
              )
           );
@@ -116,7 +122,7 @@ class _AppHomePageState extends State<AppHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title) ,
       ),
       body: Center(
         child: (_loading)? loadingWidget(context) : studentWidgets(context),
